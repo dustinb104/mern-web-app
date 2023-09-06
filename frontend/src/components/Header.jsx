@@ -11,6 +11,9 @@ function Header(){
                     <li>
                         <Link to = 'profile' class = 'text-dark'>Profile</Link>
                     </li>
+                    <li>
+                        <Link to = 'login' class = 'text-dark'>Login</Link>
+                    </li>
                 </ul>
             </div>
         </header>
