@@ -1,7 +1,14 @@
+import '../styles/forgot.css'
+
 function Forgot() {
     return (
-        <div class = 'p-2'>
-            <h1>This is the Forgot Password Page</h1>
+        <div class = 'p-2 d-flex justify-content-center'>
+            <div class='d-flex flex-column'>
+                <label class='pb-3'>
+                    email <input placeholder="Enter email" type='text'/>
+                </label>
+                <button class='btn'>Submit</button>
+            </div>
         </div>
     )
 }
