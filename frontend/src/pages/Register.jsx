@@ -4,14 +4,16 @@ import {Link} from 'react-router-dom'
 import '../styles/login.css'
 import {useState, useEffect} from 'react'
 
-function Login() {
+function Register() {
 
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         password: '',
+        password2: ''
     })
 
-    const {email, password} = formData
+    const {name, email, password, password2} = formData
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -28,11 +30,17 @@ function Login() {
     return(
         <>
             <section>
-                <h1>Login</h1>
+                <h1>Register</h1>
             </section>
             <section>
                 <form class='d-flex justify-content-center align-items-center container' onSubmit={onSubmit}>
                     <div class='d-flex flex-column w-50 align-items-center'>
+                        <div class='form-group'>
+                            <label class='mb-2'>
+                                Name: <input placeholder="Enter your name" type='text' name='name'
+                                value ={name} onChange={onChange} id='name'/>
+                            </label>
+                        </div>
                         <div class='form-group'>
                             <label class='mb-2'>
                                 Email: <input placeholder="Enter your email" type='email' name='email'
@@ -43,6 +51,12 @@ function Login() {
                             <label class='mb-2'>
                                 Password: <input placeholder="Enter your password" type='password' name='password'
                                 value ={password} onChange={onChange} id='password'/>
+                            </label>
+                        </div>
+                        <div class='form-group'>
+                            <label class='mb-2'>
+                                Confirm Password: <input placeholder="Confirm Your Password" type='password' name='password2'
+                                value ={password2} onChange={onChange} id='password2'/>
                             </label>
                         </div>
                         <div class='form-group'>
@@ -58,4 +72,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Register
