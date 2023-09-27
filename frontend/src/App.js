@@ -1,4 +1,5 @@
 import {Route, Routes} from 'react-router-dom'
+import {useState} from 'react'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
@@ -6,7 +7,24 @@ import Login from './pages/Login'
 import Forgot from './pages/Forgot'
 import Register from './pages/Register'
 
+
 function App() {
+
+  const [token, setToken] = useState();
+
+  if(sessionStorage.getItem('token')){
+    setToken(sessionStorage.getItem('token'))
+  }
+
+  // setToken(previousState => {
+  //   return{...previousState, token: }
+  // })
+
+
+  if(!token){
+    return <Login/>
+  }
+
   return (
     <div>
       <Header/>

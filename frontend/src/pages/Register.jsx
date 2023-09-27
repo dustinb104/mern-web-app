@@ -19,7 +19,7 @@ function Register() {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
-            
+
         }))
     }
 
@@ -31,6 +31,7 @@ function Register() {
         <>
             <section>
                 <h1>Register</h1>
+                <p>Please Create an Account</p>
             </section>
             <section>
                 <form class='d-flex justify-content-center align-items-center container' onSubmit={onSubmit}>

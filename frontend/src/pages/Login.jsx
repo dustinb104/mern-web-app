@@ -2,9 +2,11 @@
 // import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom'
 import '../styles/login.css'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
+import PropTypes from 'prop-types'
+import loginUser from '../auth/auth'
 
-function Login() {
+function Login(setToken) {
 
     const [formData, setFormData] = useState({
         email: '',
@@ -21,9 +23,16 @@ function Login() {
         }))
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
+        const userData = await loginUser({formData})
+        console.log(userData)
+        sessionStorage.setItem('token', JSON.stringify(userData.token))
+        window.location.reload()
+        // setToken(token)
     }
+
+    
 
     return(
         <>
@@ -57,5 +66,9 @@ function Login() {
         </>
     )
 }
+
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
+  }
 
 export default Login
