@@ -19,13 +19,13 @@ function App() {
   },[])
   
   if(!token){
-    return <Login/>
+    return <Login setToken={setToken}/>
   }else{
     return (
       <div>
         <Header/>
           <Routes>
-            <Route path = "/" element = {<Home/>}/>
+            <Route path = "/" element = {<Home token={token}/>}/>
             <Route path = "/profile" element = {<Profile/>}/>
             <Route path = '/login' element = {<Login/>}/>
             <Route path = '/login/forgot' element = {<Forgot/>}/>
