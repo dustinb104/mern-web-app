@@ -1,5 +1,5 @@
 import {Route, Routes} from 'react-router-dom'
-import {useState,useEffect} from 'react'
+// import {useState,useEffect} from 'react'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
@@ -11,21 +11,19 @@ import Register from './pages/Register'
 function App() {
 
   
-  const [token, setToken] = useState();
-  useEffect(() => {
-    if(sessionStorage.getItem('token')){
-      setToken(sessionStorage.getItem('token'))
-    }
-  },[])
+  // const [token, setToken] = useState();
+  // useEffect(() => {
+  //   if(sessionStorage.getItem('token')){
+  //     setToken(sessionStorage.getItem('token'))
+  //   }
+  // },[])
   
-  if(!token){
-    return <Login setToken={setToken}/>
-  }else{
+ 
     return (
       <div>
         <Header/>
           <Routes>
-            <Route path = "/" element = {<Home token={token}/>}/>
+            <Route path = "/" element = {<Home/>}/>
             <Route path = "/profile" element = {<Profile/>}/>
             <Route path = '/login' element = {<Login/>}/>
             <Route path = '/login/forgot' element = {<Forgot/>}/>
@@ -33,7 +31,6 @@ function App() {
           </Routes>
       </div>
     );
-  }
 
   
 

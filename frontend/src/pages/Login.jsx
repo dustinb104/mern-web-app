@@ -3,10 +3,11 @@
 import {Link} from 'react-router-dom'
 import '../styles/login.css'
 import {useState} from 'react'
+import {useDispatch} from 'react-redux'
 // import PropTypes from 'prop-types'
-import loginUser from '../auth/auth'
+import login from '../features/auth/authService'
 
-function Login({setToken}) {
+function Login() {
 
     const [formData, setFormData] = useState({
         email: '',
@@ -14,6 +15,8 @@ function Login({setToken}) {
     })
 
     const {email, password} = formData
+
+    const dispatch = useDispatch()
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -23,14 +26,14 @@ function Login({setToken}) {
         }))
     }
 
-    const onSubmit = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
-        const userData = await loginUser({formData})
+        const userData = dispatch(login({formData}))
         // console.log(userData)
         // sessionStorage.setItem('token', JSON.stringify(userData.token))
-        sessionStorage.setItem('token', userData.token)
-        const token = sessionStorage.getItem('token')
-        setToken(token)
+        // sessionStorage.setItem('token', userData.token)
+        // const token = sessionStorage.getItem('token')
+        // setToken(token)
         // window.location.reload()
     }
 

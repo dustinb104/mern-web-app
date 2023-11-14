@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const loginUser = async (userData) => {
+const login = async (userData) => {
     const API_URL = '/api/users/'
     // const API_URL = 'http://localhost:5000/api/users/'
     // console.log(userData.formData)
@@ -16,4 +16,13 @@ const loginUser = async (userData) => {
     return response.data
 }
 
-export default loginUser
+const logout = () =>{
+    localStorage.removeItem('user')
+}
+
+const authService = {
+    login,
+    logout
+}
+
+export default authService

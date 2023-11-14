@@ -1,7 +1,9 @@
 import {Link} from 'react-router-dom'
 // import {Component} from 'react'
-// import {useState, useEffect} from 'react'
-import RenderPosts from '../features/postRender'
+import {useEffect} from 'react'
+// import RenderPosts from '../features/postRender'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 // import PostItem from '../components/PostItem'
 
 // function mapRenderedPosts(posts) {
@@ -10,12 +12,22 @@ import RenderPosts from '../features/postRender'
 // )})
 // }
 
-function Home({token}) {
+function Home() {
+
+    const navigate = useNavigate()
+
+    const {user} = useSelector((state) => state.auth)
 
     // var posts = []
 
-    const posts = RenderPosts({token})
-    console.log(posts)
+    useEffect(() => {
+        if(!user){
+            navigate('/login')
+        }
+    },[])
+
+    // const posts = RenderPosts({token})
+    // console.log(posts)
     // componentDidMount(){
     //     console.log(posts)
     // }
